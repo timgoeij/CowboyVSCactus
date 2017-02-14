@@ -2,6 +2,7 @@
 #define __Game__
 
 #include <SDL.h>
+#include "TextureManager.h"
 
 class Game
 {
@@ -21,7 +22,7 @@ private:
 	
 	SDL_Window* window = 0;
 	SDL_Renderer* rendererer = 0;
-	
+
 	bool running;
 };
 #endif
