@@ -1,6 +1,7 @@
 #include "Game.h"
 
 
+Game* Game::instance = 0;
 
 Game::Game()
 {
@@ -11,7 +12,7 @@ Game::~Game()
 {
 }
 
-bool Game::init(const char * title, int xpos, int ypos, int width, int height, int flags)
+bool Game::Init(const char * title, int xpos, int ypos, int width, int height, int flags)
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
 	{
@@ -46,14 +47,14 @@ bool Game::init(const char * title, int xpos, int ypos, int width, int height, i
 	return true;
 }
 
-void Game::render()
+void Game::Render()
 {
 	SDL_RenderClear(rendererer);
 
 	SDL_RenderPresent(rendererer);
 }
 
-void Game::update()
+void Game::Update()
 {
 	SDL_Event event;
 
@@ -68,11 +69,11 @@ void Game::update()
 	}
 }
 
-void Game::handleEvents()
+void Game::HandleEvents()
 {
 }
 
-void Game::clean()
+void Game::Clean()
 {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(rendererer);

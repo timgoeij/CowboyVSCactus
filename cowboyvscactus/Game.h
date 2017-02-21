@@ -7,16 +7,28 @@
 class Game
 {
 public:
-	Game();
+	
 	~Game();
 
-	bool init(const char* title, int xpos, int ypos, int width, int height, int flags);
-	void render();
-	void update();
-	void handleEvents();
-	void clean();
+	static Game* Instance()
+	{
+		if (instance == 0)
+		{
+			instance = new Game();
+			return instance;
+		}
+
+		return instance;
+	}
+
+	bool Init(const char* title, int xpos, int ypos, int width, int height, int flags);
+	void Render();
+	void Update();
+	void HandleEvents();
+	void Clean();
 
 	bool Running() { return running; }
+	SDL_Renderer* GetRenderer() const { return rendererer; }
 
 private:
 	
@@ -24,5 +36,11 @@ private:
 	SDL_Renderer* rendererer = 0;
 
 	bool running;
+
+	static Game* instance;
+
+	Game();
 };
+
+typedef Game TheGame;
 #endif
