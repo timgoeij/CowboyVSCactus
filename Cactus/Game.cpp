@@ -1,7 +1,7 @@
 #include "Game.h"
 
 
-Game::instance = 0;
+Game* Game::instance = 0;
 
 Game::Game()
 {
